@@ -1,10 +1,12 @@
 .pet-card {
     width: 100%;
     margin: 20px;
-    background-color: rgb(197, 197, 191);
+    background-color: var(--grey-color);
+    /* border-radius: 15px; */
   }
 
 .pet-card img {
+    /* border-radius: 15px 15px 0 0; */
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -12,4 +14,14 @@
 
 .pet-card a {
     text-decoration: none;
+}
+
+.pet-card-text {
+    padding: 10px 20px;
+}
+
+.pet-card-text p {
+    font-weight: 500;
+    font-size: 1.1em;
+    color: var(--dark-color);
 }

@@ -9,7 +9,9 @@ const PetCard = (props) => {
         <div className='pet-card'>
             <Link to='/pet'>
                 <img src={projectData.image} alt={projectData.pet_name}/>
-                <h3>{projectData.title}</h3>
+                <div className='pet-card-text'>
+                    <p>{projectData.title}</p>
+                </div>
             </Link>
         </div>
     )

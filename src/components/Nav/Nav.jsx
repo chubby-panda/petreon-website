@@ -5,8 +5,11 @@ import './Nav.css'
 function Nav() {
     return (
         <nav>
-            <Link to='/'>Home</Link>
-            <Link to='/pet'>Pet</Link>
+            <h1>Petreon</h1>
+            <div className="nav-links">
+                <Link to='/'>Home</Link>
+                <Link to='/pet'>Pet</Link>
+            </div>
         </nav>
     )
 }
