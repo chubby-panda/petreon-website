@@ -35,7 +35,7 @@ export const OnePet = {
     "id": 1,
     "title": "Bob needs a wheelchair",
     "pet_name": "Bob",
-    "image": "/media/media/default.jpg",
+    "image": "https://cdn.pixabay.com/photo/2015/06/08/15/02/pug-801826_960_720.jpg",
     "description": "Bob had both his back legs amputated and needs wheels to get around. Please make an old pup's dreams come true.",
     "med_treatment": "Wheelchair",
     "date_created": "2020-09-04T00:47:32.725429Z",

@@ -1,3 +1,5 @@
-h1 {
-    margin: 40px 100px;
-}
+#pet-list {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 20px;
+  }
