@@ -1,8 +1,14 @@
 import React from 'react'
+import { AllPets } from '../data'
 
 function HomePage() {
-    return <h1>This is the home page</h1>
+    return (
+        <div>
+            {AllPets.map((projectData, key) => {
+                return <div key={key}>{projectData.title}</div>
+            })}
+        </div>
+    )
 }
-
 
 export default HomePage

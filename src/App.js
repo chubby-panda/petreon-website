@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Nav from './components/Nav/Nav'
 import HomePage from './pages/HomePage'
 import PetPage from './pages/PetPage'
+import './App.css'
 
 
 const App = () => {
