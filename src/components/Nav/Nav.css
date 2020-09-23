@@ -1,27 +1,36 @@
 nav {
-    background-color: var(--primary-color);
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--dark-color);
     padding: 0 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    height: 70px;
+    width: 92.3vw;
+    z-index: 10;
 }
 
 nav h1 {
-    color: var(--white-color);
-    font-size: 1.9em;
+    color: var(--dark-color);
+    font-size: 1.5em;
     margin: 10px;
+    font-weight: 600;
+
 }
 
 nav a {
-    color: #f4f4f4;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    color: var(--dark-color);
+    padding: 15px 15px;
+    font-size: 1rem;
     text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: 500;
 }
 
 nav a:hover {
-    background-color: var(--primary-color-muted);
+    text-decoration: underline;
+}
+
+nav button {
+    margin-left: 20px;
 }

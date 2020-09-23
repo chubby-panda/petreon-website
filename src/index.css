@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
-    --white-color: #f4f4f4;
-    --dark-color: #222;
+    --white-color: #fff;
+    --dark-color: rgba(17, 17, 17, 0.952);
     --dark-color-muted: #333;
     --grey-color: rgb(247, 241, 241);
-    --primary-color: #3A68D4;
-    --primary-color-muted: #315dc2;
+    --primary-color: #e45909;
+    --primary-color-muted: #c04903;
     --secondary-color: #FFB106;
+    --secondary-color-muted: #e09b05;
 }
 
 body {
@@ -15,8 +16,88 @@ body {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.35;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+p {
+    font-size: 0.95rem;
+}
+
+a {
+    color: var(--dark-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.centered {
+    text-align: center;
+}
+
+.text-primary {color: var(--primary-color);}
+.text-secondary {color: var(--secondary-color);}
+
+.py-1 {padding: 10px 0;}
+.py-2 {padding: 20px 0;}
+.py-3 {padding: 30px 0;}
+.py-4 {padding: 40px 0;}
+
+.px-1 {padding: 0 10px;}
+.px-2 {padding: 0 20px;}
+.px-3 {padding: 0 30px;}
+.px-4 {padding: 0 40px;}
+
+.my-1 {margin: 10px 0;}
+.my-2 {margin: 20px 0;}
+.my-3 {margin: 30px 0;}
+.my-4 {margin: 40px 0;}
+
+.mx-1 {margin: 0 10px;}
+.mx-2 {margin: 0 20px;}
+.mx-3 {margin: 0 30px;}
+.mx-4 {margin: 0 40px;}
+
+.btn {
+    padding: 12px 20px;
+    border: 2px solid var(--dark-color);
+    border-radius: 40px;
+    background-color: transparent;
+    width: fit-content;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    background-color: var(--dark-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-muted);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color-muted);
+}
+

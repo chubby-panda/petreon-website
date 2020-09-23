@@ -7,10 +7,12 @@ const PetCard = (props) => {
 
     return (
         <div className='pet-card'>
-            <Link to='/pet'>
-                <img src={projectData.image} alt={projectData.pet_name}/>
+            <Link to={`/pet/${projectData.id}`}>
+                <div className="pet-card-image">
+                    <img src={`${process.env.REACT_APP_API_URL}${projectData.image}`} alt={projectData.pet_name}/>
+                </div>
                 <div className='pet-card-text'>
-                    <p>{projectData.title}</p>
+                    <h2>{projectData.title}</h2>
                 </div>
             </Link>
         </div>

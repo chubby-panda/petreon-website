@@ -1,6 +1,39 @@
 #pet-list {
-    margin: 40px 120px;
+    margin: 20px 120px;
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-  }
+}
+
+#pet-detail {
+    padding: 20px 0;
+}
+
+#showcase {
+    height: 75vh;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    justify-content: center;
+}
+
+#showcase h1 {
+    font-size: 3.6rem;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    margin: 0;
+}
+
+#showcase p {
+    font-size: 1.5rem;
+}
+
+#showcase button {
+    font-size: 1.1rem;
+}
+
+.separation-container {
+    height: 70px;
+}

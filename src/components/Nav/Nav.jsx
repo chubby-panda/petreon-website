@@ -5,10 +5,12 @@ import './Nav.css'
 function Nav() {
     return (
         <nav>
-            <h1>Petreon</h1>
+            <Link to='/'><h1>Petreon</h1></Link>
             <div className="nav-links">
                 <Link to='/'>Home</Link>
-                <Link to='/pet'>Pet</Link>
+                <Link to='/category'>Category</Link>
+                <button className="btn btn-secondary">Login</button>
+                <button className="btn btn-primary">Create account</button>
             </div>
         </nav>
     )
