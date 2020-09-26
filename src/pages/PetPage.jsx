@@ -29,14 +29,12 @@ function PetPage(props) {
     if (loading) {
         return (
             <>
-            <div className="separation-container"></div>
             <h1>I am loading...</h1>
             </>
         )
     } else {
         return (
             <>
-                <div className="separation-container"></div>
                 <div id="pet-detail" className="container">
                     <PetDetailCard petData={petData} pledges={pledges} />
                 </div>

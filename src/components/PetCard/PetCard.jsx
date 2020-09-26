@@ -8,9 +8,9 @@ const PetCard = (props) => {
     return (
         <div className='pet-card'>
             <Link to={`/pet/${projectData.id}`}>
-                <div className="pet-card-image">
+                {/* <div className="pet-card-image">
                     <img src={`${process.env.REACT_APP_API_URL}${projectData.image}`} alt={projectData.pet_name}/>
-                </div>
+                </div> */}
                 <div className='pet-card-text'>
                     <h2>{projectData.title}</h2>
                 </div>

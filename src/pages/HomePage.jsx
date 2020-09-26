@@ -17,7 +17,6 @@ function HomePage() {
 
     return (
         <>
-            <div className="separation-container"></div>
             <div id='showcase'>
                 <h1 className="text-secondary">Save a pet, change a life</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae consequuntur.</p>
