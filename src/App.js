@@ -12,13 +12,11 @@ import LoggedOutPage from './pages/LoggedOutPage'
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import PetCreatePage from './pages/PetCreatePage'
+import ProfilePage from './pages/ProfilePage'
 
 
 
 const App = () => {
-
-    // const [loggedin, setLoggedin] = useState(localStorage.getItem('token') ? true : false)
-    
 
     return (
         <Router>
@@ -28,6 +26,9 @@ const App = () => {
                 <Switch>
                     <Route path='/pet/:id'>
                         <PetPage />
+                    </Route>
+                    <Route path='/profile/:id'>
+                        <ProfilePage />
                     </Route>
                     <Route path='/pet-create'>
                         <PetCreatePage />

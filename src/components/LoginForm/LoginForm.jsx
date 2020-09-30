@@ -42,6 +42,7 @@ const LoginForm = () => {
                 } else {
                     window.localStorage.setItem('token', response.token)
                     window.localStorage.setItem('username', credentials.username)
+                    // window.localStorage.setItem('id', response.id)
                     window.location.reload()
                     history.push('/')
                 }

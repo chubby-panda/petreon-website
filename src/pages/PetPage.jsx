@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import PetDetailCard from '../components/PetDetailCard/PetDetailCard'
-// import { OnePet } from '../data'
+
 
 function PetPage(props) {
     const [loading, setLoading] = useState(true)

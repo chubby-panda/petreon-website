@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './PetDetailCard.css'
 
+
+
 const PetDetailCard = ({petData, pledges}) => {
 
     const [image, setImage] = useState(petData.image)
