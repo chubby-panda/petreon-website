@@ -9,11 +9,12 @@ const LoginForm = () => {
         password: ''
     })
 
+    const [errors, setErrors] = useState(null)
+
     const history = useHistory()
 
     const handleChange = (e) => {
         const {id, value} = e.target
-        // console.log(e.target)
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             [id]: value,
@@ -35,9 +36,15 @@ const LoginForm = () => {
         e.preventDefault()
         if (credentials.username && credentials.password) {
             postData().then((response) => {
-                window.localStorage.setItem('token', response.token)
-                window.localStorage.setItem('username', credentials.username)
-                history.push('/')
+                console.log(response)
+                if (response.non_field_errors) {
+                    setErrors(response.non_field_errors)
+                } else {
+                    window.localStorage.setItem('token', response.token)
+                    window.localStorage.setItem('username', credentials.username)
+                    window.location.reload()
+                    history.push('/')
+                }
             })
         }
     }
@@ -45,6 +52,9 @@ const LoginForm = () => {
     return (
         <>
             <form>
+                {errors !== null && 
+                    <p className="alert">{errors}</p>
+                }
                 <div className="my-1 form-input-box">
                     <label htmlFor="username">Username:</label>
                     <input type="text" id="username" placeholder="Enter username..." onChange={handleChange} />

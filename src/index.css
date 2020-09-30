@@ -112,3 +112,11 @@ input:focus {
     outline: none;
     border: 1px solid var(--secondary-color);
 }
+
+.alert {
+    color: red;
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+}

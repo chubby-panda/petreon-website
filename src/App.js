@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Nav from './components/Nav/Nav'
@@ -9,16 +9,16 @@ import './App.css'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import LoggedOutPage from './pages/LoggedOutPage'
+// import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import PublicRoute from './components/PublicRoute/PublicRoute';
+import PetCreatePage from './pages/PetCreatePage'
+
 
 
 const App = () => {
 
-    const [loggedin, setLoggedin] = useState(window.localStorage.getItem('token') ? true : false)
-    const username = ''
-
-    useEffect(() => {
-        console.log('You clicked')
-    })
+    // const [loggedin, setLoggedin] = useState(localStorage.getItem('token') ? true : false)
+    
 
     return (
         <Router>
@@ -29,17 +29,20 @@ const App = () => {
                     <Route path='/pet/:id'>
                         <PetPage />
                     </Route>
+                    <Route path='/pet-create'>
+                        <PetCreatePage />
+                    </Route>
                     <Route path='/category'>
                         <CategoryPage />
                     </Route>
-                    <Route path='/login'>
-                        <LoginPage loggedin={loggedin} />
-                    </Route>
-                    <Route path='/register'>
-                        <RegisterPage loggedin={loggedin} />
-                    </Route>
+                    <PublicRoute restricted={true} component={LoginPage} path='/login'>
+                        {/* <LoginPage /> */}
+                    </PublicRoute>
+                    <PublicRoute restricted={true} component={RegisterPage} path='/register'>
+                        {/* <RegisterPage /> */}
+                    </PublicRoute>
                     <Route path='/logout'>
-                        <LoggedOutPage loggedin={loggedin} />
+                        <LoggedOutPage />
                     </Route>
                     <Route path='/'>
                         <HomePage />

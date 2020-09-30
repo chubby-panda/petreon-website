@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 const RegisterForm = () => {
 
@@ -9,6 +10,8 @@ const RegisterForm = () => {
         password: '',
         password2: '',
     })
+
+    const [errors, setErrors] = useState([])
 
     const history = useHistory()
 
@@ -35,16 +38,30 @@ const RegisterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (credentials.username && credentials.password) {
-            postData().then((response) => {
-                window.localStorage.setItem('token', response.token)
-                history.push('/')
-            })
+        if (credentials.password !== credentials.password2) {
+            setErrors(['The passwords do not match'])
+        } else {
+            if (credentials.username && credentials.email && credentials.password && credentials.password2) {
+                postData().then((response) => {
+                    if (response.username !== undefined && response.username[0] === "A user with that username already exists.") {
+                        setErrors(response.username[0])
+                    } else {
+                        if (response.email !== undefined && response.email[0] === "Enter a valid email address.") {
+                            setErrors(response.email[0])
+                        } else {
+                                history.push('/login')
+                        }
+                    }
+                })
+            } else {
+                setErrors(['Please fill out all fields.'])
+            }
         }
     }
 
     return (
         <form>
+            {errors.length > 0 ? <ErrorMessage errors={errors} /> : null}
             <div className="my-1 form-input-box">
                 <label htmlFor="username">Username:</label>
                 <input type="text" id="username" onChange={handleChange}/>
@@ -58,8 +75,8 @@ const RegisterForm = () => {
                 <input type="password" id="password" onChange={handleChange}/>
             </div>
             <div className="my-1 form-input-box">
-                <label htmlFor="password">Confirm password:</label>
-                <input type="password" id="password" onChange={handleChange}/>
+                <label htmlFor="password2">Confirm password:</label>
+                <input type="password" id="password2" onChange={handleChange}/>
             </div>
             <button className="btn btn-primary my-2" type="submit" onClick={handleSubmit}>Register</button>
         </form>

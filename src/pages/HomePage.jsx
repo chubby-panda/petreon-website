@@ -15,6 +15,12 @@ function HomePage() {
         })
     }, [])
 
+    // if (isLogin()) {
+    //     console.log(localStorage.username)
+    // } else {
+    //     console.log("Not logged in.")
+    // }
+
     return (
         <>
             <div id='showcase'>
