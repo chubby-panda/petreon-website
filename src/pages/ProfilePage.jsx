@@ -6,8 +6,9 @@ import ProfileCard from '../components/ProfileCard/ProfileCard'
 function ProfilePage(props) {
     const [loading, setLoading] = useState(true)
     const [profileData, setProfileData] = useState([])
-    // const [pets, setPets] = useState([])
-    let {id} = useParams()
+    const [accountData, setAccountData] = useState([])
+    const [pets, setPets] = useState([])
+    let {username} = useParams()
 
     const fetchURL = (url, setterFunction) => {
         fetch(`${process.env.REACT_APP_API_URL}${url}`)
@@ -20,7 +21,9 @@ function ProfilePage(props) {
     }
     
     useEffect(() => {
-        fetchURL(`/users/profile/${id}`, setProfileData)
+        fetchURL(`/users/account/${username}`, setAccountData)
+        fetchURL(`/users/profile/${username}`, setProfileData)
+        fetchURL(`/users/${username}/pets`, setPets)
         setLoading(false)
     }, [])
 
@@ -35,6 +38,14 @@ function ProfilePage(props) {
             <>
                 <div id="pet-detail" className="container">
                     <ProfileCard profileData={profileData} />
+                    <div>{accountData.email}</div>
+                    {pets.map((pet, key) => {
+                        return (
+                            <div key={key}>
+                                {pet.title}
+                            </div>
+                        )
+                    })}
                 </div>
             </>
         )

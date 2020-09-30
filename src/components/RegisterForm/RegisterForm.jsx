@@ -44,12 +44,13 @@ const RegisterForm = () => {
             if (credentials.username && credentials.email && credentials.password && credentials.password2) {
                 postData().then((response) => {
                     if (response.username !== undefined && response.username[0] === "A user with that username already exists.") {
+                        console.log(response)
                         setErrors(response.username[0])
                     } else {
                         if (response.email !== undefined && response.email[0] === "Enter a valid email address.") {
                             setErrors(response.email[0])
                         } else {
-                                history.push('/login')
+                            history.push('/login')
                         }
                     }
                 })

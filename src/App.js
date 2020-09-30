@@ -27,7 +27,7 @@ const App = () => {
                     <Route path='/pet/:id'>
                         <PetPage />
                     </Route>
-                    <Route path='/profile/:id'>
+                    <Route path='/profile/:username'>
                         <ProfilePage />
                     </Route>
                     <Route path='/pet-create'>
