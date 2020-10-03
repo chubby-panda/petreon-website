@@ -44,7 +44,6 @@ function Nav() {
               Create account
             </Link>
           )}
-          {loggedIn ? console.log("Logged in") : console.log("Not logged in")}
         </div>
       </nav>
       <div className="separation-container"></div>
