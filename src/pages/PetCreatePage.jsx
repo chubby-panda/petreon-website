@@ -1,5 +1,5 @@
-import React from 'react'
-import PostPetForm from '../components/PostPetForm/PostPetForm'
+import React from "react";
+import PostPetForm from "../components/PostPetForm/PostPetForm";
 
 function PetCreatePage() {
     return (
@@ -9,7 +9,7 @@ function PetCreatePage() {
                 <PostPetForm />
             </div>
         </>
-    )
+    );
 }
 
-export default PetCreatePage
+export default PetCreatePage;

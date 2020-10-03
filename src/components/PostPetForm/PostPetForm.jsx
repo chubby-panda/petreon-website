@@ -2,16 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const PostPetForm = () => {
-    // Reorganise server-side logic:
-    // Write a separate petimage serializer that takes in pet model
-    // Then have two separate forms for PetCreatePage (image, everything else)
-    // Follow steps to retrieve signed request from S3 and upload file
-
-    const [imageFile, setImageFile] = useState(null);
     const [credentials, setCredentials] = useState({
         title: "",
         pet_name: "",
-        image: imageFile,
         description: "",
         med_treatment: "",
         goal: "",
@@ -23,9 +16,7 @@ const PostPetForm = () => {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        if (e.target.type === "file") {
-            console.log("This is a file.");
-        }
+
         setCredentials((prevCredentials) => ({
             ...prevCredentials,
             [id]: value,
@@ -80,15 +71,6 @@ const PostPetForm = () => {
                 <div className="my-1 form-input-box">
                     <label htmlFor="pet_name">Pet Name:</label>
                     <input type="text" id="pet_name" onChange={handleChange} />
-                </div>
-                <div className="my-1 form-input-box">
-                    <label htmlFor="image">Image:</label>
-                    <input
-                        type="file"
-                        id="image"
-                        onChange={(e) => setImageFile(e.target.files[0])}
-                        accept="image/*"
-                    />
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="description">Description:</label>
