@@ -1,8 +1,17 @@
 #pet-list {
-    margin: 20px 120px;
+    margin: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    padding: 30px 10px;
+}
+
+#my-pets-page {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 30px 10px;
 }
 
 #pet-detail {

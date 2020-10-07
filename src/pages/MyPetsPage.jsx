@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ProfileCard from "../components/ProfileCard/ProfileCard";
-import UpdateProfileForm from "../components/UpdateProfileForm/UpdateProfileForm";
+import PetCard from "../components/PetCard/PetCard";
 
-function ProfilePage(props) {
+function MyPetsPage(props) {
     const [loading, setLoading] = useState(true);
-    const [profileData, setProfileData] = useState([]);
-    const [accountData, setAccountData] = useState([]);
     const [pets, setPets] = useState([]);
     let { username } = useParams();
 
@@ -21,8 +18,6 @@ function ProfilePage(props) {
     };
 
     useEffect(() => {
-        fetchURL(`/users/account/${username}`, setAccountData);
-        fetchURL(`/users/profile/${username}`, setProfileData);
         fetchURL(`/users/${username}/pets`, setPets);
         setLoading(false);
     }, []);
@@ -36,17 +31,14 @@ function ProfilePage(props) {
     } else {
         return (
             <>
-                <div id="pet-detail" className="container">
-                    <ProfileCard profileData={profileData} />
-                    <p>{accountData.email}</p>
-                    {pets.map((pet, key) => {
-                        return <p key={key}>{pet.title}</p>;
+                <div id="my-pets-page" className="container">
+                    {pets.map((projectData, key) => {
+                        return <PetCard key={key} projectData={projectData} />;
                     })}
-                    <UpdateProfileForm />
                 </div>
             </>
         );
     }
 }
 
-export default ProfilePage;
+export default MyPetsPage;

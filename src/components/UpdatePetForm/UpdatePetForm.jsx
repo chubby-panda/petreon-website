@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-const PostPetForm = () => {
+const UpdatePetForm = () => {
+    // VARIABLES
     const [credentials, setCredentials] = useState({
         title: "",
         pet_name: "",
@@ -9,11 +10,12 @@ const PostPetForm = () => {
         med_treatment: "",
         goal: "",
         pet_category: "",
-        active: true,
+        active: "",
     });
-
+    let { petId } = useParams();
     const history = useHistory();
 
+    // METHODS
     const handleChange = (e) => {
         const { id, value } = e.target;
 
@@ -29,13 +31,16 @@ const PostPetForm = () => {
             formData.append(key, credentials[key])
         );
         const token = window.localStorage.getItem("token");
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/pets/`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Token ${token}`,
-            },
-            body: formData,
-        });
+        const response = await fetch(
+            `${process.env.REACT_APP_API_URL}/pets/${petId}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Token ${token}`,
+                },
+                body: formData,
+            }
+        );
         return response.json();
     };
 
@@ -43,13 +48,12 @@ const PostPetForm = () => {
         e.preventDefault();
         console.log("Submit pressed...");
         if (
-            credentials.title &&
-            credentials.pet_name &&
-            // credentials.image &&
-            credentials.description &&
-            credentials.med_treatment &&
-            credentials.goal
-            // credentials.pet_category
+            credentials.title ||
+            credentials.pet_name ||
+            credentials.description ||
+            credentials.med_treatment ||
+            credentials.goal ||
+            credentials.pet_category
         ) {
             console.log("All data is there...");
             postData().then((response) => {
@@ -61,6 +65,7 @@ const PostPetForm = () => {
         }
     };
 
+    // TEMPLATE
     return (
         <>
             <form>
@@ -100,7 +105,13 @@ const PostPetForm = () => {
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="pet_category">Pet Category:</label>
-                    <select id="pet_category" onChange={handleChange}></select>
+                    <select id="pet_category" onChange={handleChange}>
+                        <option value="dog">dog</option>;
+                        <option value="cat">cat</option>;
+                        <option value="bird">bird</option>;
+                        <option value="other">other</option>;
+                        <option value="rabbit">rabbit</option>;
+                    </select>
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="active">Active:</label>
@@ -121,4 +132,4 @@ const PostPetForm = () => {
     );
 };
 
-export default PostPetForm;
+export default UpdatePetForm;

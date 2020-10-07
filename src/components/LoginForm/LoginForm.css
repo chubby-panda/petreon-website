@@ -1,4 +1,4 @@
-.form-input-box {
+#login-form .form-input-box {
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -6,10 +6,10 @@
     align-items: center;
 }
 
-.form-input-box label {
+#login-form .form-input-box label {
     width: 50%;
 }
 
-.form-input-box input {
+#login-form .form-input-box input {
     width: 50%;
 }

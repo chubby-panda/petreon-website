@@ -13,7 +13,7 @@ const ProfileCard = ({profileData}) => {
             </>
         )
     } else {
-        return (
+        return ( 
             <div className='profile-detail-card'>
                 <h2>{profileData.user}</h2>
                 <div className="profile-detail-content">

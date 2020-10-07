@@ -1,0 +1,9 @@
+#update-profile-form textarea {
+    height: 60px;
+    width: 60%;
+}
+
+#update-profile-form .form-input-box {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import "./PostImageForm.css";
 
 const PostImageForm = ({ petId }) => {
     const [imageFile, setImageFile] = useState(null);
@@ -11,21 +12,21 @@ const PostImageForm = ({ petId }) => {
     };
 
     const postData = async () => {
-        const formData = new FormData();
-        formData.append("image", imageFile);
+        // const formData = new FormData();
+        // formData.append("image", imageFile);
         const token = window.localStorage.getItem("token");
         const options = {
             method: "POST",
             headers: {
                 "Authorization": `Token ${token}`,
-                "Content-Type": "multipart/form-data",
+                "Content-Disposition": `attachment; filename="${imageFile.name}"`,
             },
+            credentials: "omit",
             body: imageFile,
         };
         const url = `${process.env.REACT_APP_API_URL}/pets/${petId}/images/`;
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const response = await fetch(proxyurl + url, options);
-        delete options.headers["Content-Type"];
+        const response = await fetch(url, options);
+
         return response.json();
     };
 
@@ -44,8 +45,9 @@ const PostImageForm = ({ petId }) => {
     };
 
     return (
-        <>
-            <form>
+        <div className="container">
+            <h1>Upload an Image</h1>
+            <form id="post-image-form">
                 <div className="my-1 form-input-box">
                     <label htmlFor="image">Image:</label>
                     <input
@@ -61,10 +63,10 @@ const PostImageForm = ({ petId }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Post
+                    Upload
                 </button>
             </form>
-        </>
+        </div>
     );
 };
 

@@ -1,18 +1,47 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import PledgeForm from "../PledgeForm/PledgeForm";
 import "./PetDetailCard.css";
 
-const PetDetailCard = ({ petData, pledges }) => {
-    const [image, setImage] = useState(petData.image);
-    const showNextImage = (image) => {
-        setImage(petData.image2);
-    };
+const PetDetailCard = ({ petData, pledges, images, petId }) => {
+    const username = window.localStorage.getItem("username");
+    let pledge_content;
+    console.log(pledges);
+    if (pledges.length > 0) {
+        pledge_content = (
+            <ul>
+                {pledges.map((pledgeData, key) => {
+                    if (pledgeData.supporter == true) {
+                        return (
+                            <Link to="/" key={key}>
+                                {`$${pledgeData.amount} from an anonymous supporter`}
+                            </Link>
+                        );
+                    } else {
+                        return (
+                            <Link to={`/profile/${pledgeData.supporter}`}>
+                                <li key={key}>
+                                    {`$${pledgeData.amount} from ${pledgeData.supporter}`}
+                                </li>
+                            </Link>
+                        );
+                    }
+                })}
+            </ul>
+        );
+    } else {
+        pledge_content = <p>No pledges.</p>;
+    }
 
-    const showPreviousImage = (image) => {
-        setImage(petData.image);
-    };
+    // console.log(pledges);
 
-    console.log(petData);
-    if (petData.length === 0) {
+    let date;
+    if (petData.date_created != undefined) {
+        date = new Date(petData.date_created).toDateString();
+    }
+
+    if (petData.length === 0 || images.length === 0) {
         return (
             <>
                 <h1>I am loading pet detail card...</h1>
@@ -21,35 +50,32 @@ const PetDetailCard = ({ petData, pledges }) => {
     } else {
         return (
             <div className="pet-detail-card">
-                <h2>{petData.title}</h2>
                 <div className="pet-detail-content">
                     <div className="pet-detail-content-text">
+                        <h2>{petData.title}</h2>
                         <p>{petData.description}</p>
-                        <p>{`Created at: ${petData.date_created}`}</p>
+                        <p>{petData.owner}</p>
+                        <p>{`Created at: ${date}`}</p>
                         <p>{`Status: ${
-                            petData.active ? "open to new pledges" : "Expired"
+                            petData.active ? "Open" : "Expired"
                         }`}</p>
-                        <p>{`Goal: ${petData.goal}, Pledged amount: ${petData.pledged_amount}`}</p>
+                        <p>{`Goal: $${petData.goal}, Pledged amount: $${petData.pledged_amount}`}</p>
                     </div>
-                    {/* <div className="pet-detail-content-image">
-                        <img src={image} alt={petData.title}/>
-                        <div className="pet-detail-image-buttons">
-                            <button onClick={showPreviousImage}><i className="fas fa-chevron-left fa-3x"></i></button>
-                            <button onClick={showNextImage}><i className="fas fa-chevron-right fa-3x"></i></button>
-                        </div>
-                    </div> */}
+                    <div className="pet-detail-content-image">
+                        <img src={images[0].image} alt={petData.title} />
+                    </div>
                 </div>
+                <ProgressBar
+                    goal={petData.goal}
+                    pledged_amount={petData.pledged_amount}
+                />
                 <div className="pet-detail-pledges">
                     <h3>Pledges:</h3>
-                    <ul>
-                        {pledges.map((pledgeData, key) => {
-                            return (
-                                <li key={key}>
-                                    {`$${pledgeData.amount} from ${pledgeData.supporter}`}
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    {petData.owner != username ? (
+                        <PledgeForm petId={petId} />
+                    ) : null}
+
+                    {pledge_content}
                 </div>
             </div>
         );

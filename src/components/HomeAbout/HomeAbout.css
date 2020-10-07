@@ -1,0 +1,30 @@
+.homepage-about-inner {
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.homepage-about-inner-text {
+    padding: 20px;
+}
+
+#homepage-about .image-container {
+    width: 1000px;
+}
+
+#homepage-about .image-container img {
+    width: 100%;
+}
+
+#homepage-about-1 {
+    margin-bottom: 50px;
+}
+
+#homepage-about-2 .homepage-about-inner-text,
+#homepage-about-4 .homepage-about-inner-text {
+    padding-right: 50px;
+}
+
+#homepage-about-3 .homepage-about-inner-text {
+    padding-left: 50px;
+}

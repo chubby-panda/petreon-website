@@ -1,0 +1,19 @@
+#progress-bar {
+    height: 30px;
+    width: 100%;
+    background-color: var(--grey-color);
+    border-radius: 20px;
+}
+
+#progress {
+    background-color: var(--primary-color);
+    height: inherit;
+    border-radius: 20px 0 0 20px;
+}
+
+#progress-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+

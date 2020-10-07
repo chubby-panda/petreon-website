@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
     --white-color: #fff;
@@ -7,20 +7,21 @@
     --grey-color: rgb(247, 241, 241);
     --primary-color: #e45909;
     --primary-color-muted: #c04903;
-    --secondary-color: #FFB106;
+    --secondary-color: #ffb106;
     --secondary-color-muted: #e09b05;
 }
 
 body {
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.35;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 p {
@@ -29,40 +30,112 @@ p {
 
 a {
     color: var(--dark-color);
+    text-decoration: none;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
     padding: 0 20px;
+}
+
+.content-container {
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+.grey-background {
+    background-color: var(--grey-color);
 }
 
 .centered {
     text-align: center;
 }
 
-.text-primary {color: var(--primary-color);}
-.text-secondary {color: var(--secondary-color);}
+.text-primary {
+    color: var(--primary-color);
+}
+.text-secondary {
+    color: var(--secondary-color);
+}
 
-.py-1 {padding: 10px 0;}
-.py-2 {padding: 20px 0;}
-.py-3 {padding: 30px 0;}
-.py-4 {padding: 40px 0;}
+.text-upper {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
-.px-1 {padding: 0 10px;}
-.px-2 {padding: 0 20px;}
-.px-3 {padding: 0 30px;}
-.px-4 {padding: 0 40px;}
+.sub-text {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
 
-.my-1 {margin: 10px 0;}
-.my-2 {margin: 20px 0;}
-.my-3 {margin: 30px 0;}
-.my-4 {margin: 40px 0;}
+.larger-text {
+    font-size: 1.2rem;
+    line-height: 2;
+}
 
-.mx-1 {margin: 0 10px;}
-.mx-2 {margin: 0 20px;}
-.mx-3 {margin: 0 30px;}
-.mx-4 {margin: 0 40px;}
+.larger-heading {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.large-heading {
+    font-size: 2.2rem;
+}
+
+.py-1 {
+    padding: 10px 0;
+}
+.py-2 {
+    padding: 20px 0;
+}
+.py-3 {
+    padding: 30px 0;
+}
+.py-4 {
+    padding: 40px 0;
+}
+
+.px-1 {
+    padding: 0 10px;
+}
+.px-2 {
+    padding: 0 20px;
+}
+.px-3 {
+    padding: 0 30px;
+}
+.px-4 {
+    padding: 0 40px;
+}
+
+.my-1 {
+    margin: 10px 0;
+}
+.my-2 {
+    margin: 20px 0;
+}
+.my-3 {
+    margin: 30px 0;
+}
+.my-4 {
+    margin: 40px 0;
+}
+
+.mx-1 {
+    margin: 0 10px;
+}
+.mx-2 {
+    margin: 0 20px;
+}
+.mx-3 {
+    margin: 0 30px;
+}
+.mx-4 {
+    margin: 0 40px;
+}
 
 .btn {
     padding: 12px 20px;
@@ -80,6 +153,7 @@ a {
 
 .btn:hover {
     background-color: var(--dark-color);
+    color: var(--white-color);
 }
 
 .btn-primary {
@@ -104,8 +178,9 @@ a {
 
 input {
     padding: 8px;
-    border-radius: 20px;
-    border: 1px solid var(--dark-color);
+    border-radius: 10px;
+    border: 1px solid var(--grey-color);
+    background-color: var(--grey-color);
 }
 
 input:focus {
@@ -119,4 +194,13 @@ input:focus {
     padding: 5px;
     border: 1px solid red;
     border-radius: 10px;
+}
+
+.profile-img {
+    width: 200px;
+    height: auto;
+}
+
+.reverse-flex {
+    flex-direction: row-reverse;
 }

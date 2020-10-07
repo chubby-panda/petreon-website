@@ -1,0 +1,14 @@
+#register-form .form-input-box {
+    width: 70%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#register-form .form-input-box label {
+    width: 30%;
+    margin-right: 20px;
+}
+
+#register-form .form-input-box input {
+    width: 70%;
+}

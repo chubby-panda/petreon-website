@@ -7,7 +7,6 @@ function PetPage(props) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
     const [petData, setPetData] = useState([]);
-    const [pledges, setPledges] = useState([]);
     const [images, setImages] = useState([]);
     let { petId } = useParams();
 
@@ -27,7 +26,6 @@ function PetPage(props) {
         const petsIdUrl = `/pets/${petId}`;
         fetchURL(petsIdUrl, setPetData);
         fetchURL(`${petsIdUrl}/images`, setImages);
-        fetchURL(`${petsIdUrl}/pledges`, setPledges);
         setLoading(false);
     }, []);
 
@@ -47,7 +45,6 @@ function PetPage(props) {
                         petData={petData}
                         pledges={pledges}
                         images={images}
-                        petId={petId}
                     />
                 </div>
                 {loggedIn ? <PostImageForm petId={petId} /> : null}
