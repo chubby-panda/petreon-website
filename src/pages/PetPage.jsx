@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import DeletePetForm from "../components/DeletePetForm/DeletePetForm";
 import PetDetailCard from "../components/PetDetailCard/PetDetailCard";
 import PostImageForm from "../components/PostImageForm/PostImageForm";
@@ -34,6 +34,30 @@ function PetPage(props) {
                 <UpdatePetForm petData={petData} />
                 <PostImageForm petId={petId} />
                 <DeletePetForm petId={petId} />
+                {images.length > 0 ? (
+                    <>
+                        <h4>Your images:</h4>
+                        <p>Click on an image to edit or delete it.</p>
+                        <div id="your-images">
+                            {images.map((img, key) => {
+                                return (
+                                    <Link
+                                        to={{
+                                            pathname: `/pet/${petId}/images/${img.id}`,
+                                        }}
+                                    >
+                                        <img
+                                            key={key}
+                                            src={img.image}
+                                            alt="image"
+                                            onClick={() => console.log(img.id)}
+                                        />
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </>
+                ) : null}
             </>
         );
     } else {

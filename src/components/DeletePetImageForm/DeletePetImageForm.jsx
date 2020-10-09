@@ -27,15 +27,15 @@ const DeletePetImageForm = ({ petId, imageId }) => {
     };
 
     return (
-        <>
+        <div id="delete-pet-image-form">
             <button
                 className="btn btn-primary my-2"
                 type="submit"
                 onClick={handleSubmit}
             >
-                Delete
+                Delete image
             </button>
-        </>
+        </div>
     );
 };
 

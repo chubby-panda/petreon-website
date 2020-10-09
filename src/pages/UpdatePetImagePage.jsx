@@ -27,16 +27,18 @@ const UpdatePetImagePage = () => {
     return (
         <div className="container">
             {image != null ? (
-                <>
-                    <h1>This is the image</h1>
-                    <img className="small-image" src={image.image} alt="" />
+                <div id="update-pet-image-page">
+                    <img
+                        src={image.image}
+                        alt="image"
+                    />
                     <DeletePetImageForm petId={petId} imageId={imageId} />
                     <UpdatePetImageForm
                         image={image}
                         petId={petId}
                         imageId={imageId}
                     />
-                </>
+                </div>
             ) : null}
         </div>
     );

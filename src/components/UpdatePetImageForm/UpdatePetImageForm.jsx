@@ -33,7 +33,7 @@ const UpdatePetImageForm = ({ image }) => {
     };
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         console.log("Submit pressed...");
         if (petImage != null) {
             console.log("All data is there...");
@@ -41,7 +41,7 @@ const UpdatePetImageForm = ({ image }) => {
             debugger;
             postData().then((response) => {
                 console.log(response);
-                // window.location.reload();
+                window.location.reload();
             });
         } else {
             console.log("Not all data there");
@@ -65,7 +65,7 @@ const UpdatePetImageForm = ({ image }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Update
+                    Replace image
                 </button>
             </form>
         </>
