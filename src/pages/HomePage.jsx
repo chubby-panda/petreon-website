@@ -21,7 +21,6 @@ function HomePage() {
         if (slideIndex > slides.length) {
             slideIndex = 1;
         }
-        console.log(slideIndex);
         if (slides.length > 0) {
             slides[slideIndex - 1].style.display = "block";
         }

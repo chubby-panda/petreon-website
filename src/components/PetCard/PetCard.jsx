@@ -22,8 +22,6 @@ const PetCard = (props) => {
             });
     }, []);
 
-    console.log(images);
-
     if (images.length < 1) {
         return <div className="pet-card"></div>;
     } else {

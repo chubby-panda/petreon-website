@@ -145,6 +145,7 @@ a {
     width: fit-content;
     transition: background-color 0.3s;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .btn:focus {
@@ -205,6 +206,11 @@ textarea {
     padding: 5px;
     border: 1px solid red;
     border-radius: 10px;
+}
+
+.small-image {
+    width: 200px;
+    height: auto;
 }
 
 .profile-img {

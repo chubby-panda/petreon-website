@@ -25,6 +25,29 @@ function NotificationsPage(props) {
             });
     }, []);
 
+    let notificationsContent;
+
+    if (notifications.length > 0) {
+        notificationsContent = (
+            <ul id="notifications-wrapper">
+                {notifications.map((notification, key) => {
+                    return (
+                        <NotificationCard
+                            notification={notification}
+                            key={key}
+                        />
+                    );
+                })}
+            </ul>
+        );
+    } else {
+        notificationsContent = (
+            <h2 className="mx-4">You don't have any notifications.</h2>
+        );
+    }
+
+    console.log(notifications);
+
     if (loading) {
         return (
             <>
@@ -39,18 +62,7 @@ function NotificationsPage(props) {
             <>
                 <Sidebar />
 
-                <div className="content-container">
-                    <ul>
-                        {notifications.map((notification, key) => {
-                            return (
-                                <NotificationCard
-                                    notification={notification}
-                                    key={key}
-                                />
-                            );
-                        })}
-                    </ul>
-                </div>
+                <div className="content-container">{notificationsContent}</div>
             </>
         );
     }

@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "./PostImageForm.css";
+import "./UpdateProfileImageForm.css";
 
-const PostImageForm = ({ petId }) => {
-    const [imageFile, setImageFile] = useState(null);
+const UpdateProfileImageForm = ({ profileData }) => {
+    const [profileImage, setProfileImage] = useState();
 
-    const history = useHistory();
+    useEffect(() => {
+        setProfileImage(profileData.profile_img);
+    }, [profileData]);
 
     const handleChange = (e) => {
-        setImageFile(e.target.files[0]);
+        setProfileImage(e.target.files[0]);
     };
-
-    console.log(imageFile);
+    // console.log(profileImage);
 
     const postData = async () => {
         const token = window.localStorage.getItem("token");
+        const username = window.localStorage.getItem("username");
         const options = {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Authorization": `Token ${token}`,
-                "Content-Disposition": `attachment; filename="${imageFile.name}"`,
+                "Content-Disposition": `attachment; filename="${profileImage.name}"`,
             },
             credentials: "omit",
-            body: imageFile,
+            body: profileImage,
         };
-        const url = `${process.env.REACT_APP_API_URL}/pets/${petId}/images/`;
+        const url = `${process.env.REACT_APP_API_URL}/users/profile/${username}/`;
         const response = await fetch(url, options);
+        debugger;
 
         return response.json();
     };
@@ -33,11 +36,11 @@ const PostImageForm = ({ petId }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submit pressed...");
-        if (imageFile != null) {
+        if (profileImage) {
             console.log("All data is there...");
             postData().then((response) => {
                 console.log(response);
-                window.location.reload();
+                // window.location.reload();
             });
         } else {
             console.log("Not all data there");
@@ -45,28 +48,27 @@ const PostImageForm = ({ petId }) => {
     };
 
     return (
-        <div className="container">
-            <form id="post-image-form">
+        <>
+            <form id="update-profile-image-form">
                 <div className="my-1 form-input-box">
-                    <label htmlFor="image">Image:</label>
+                    <label htmlFor="image">Profile Image:</label>
                     <input
                         type="file"
-                        id="image"
+                        id="profile_img"
                         onChange={handleChange}
                         accept="image/*"
                     />
                 </div>
-
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-primary my-2"
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Upload
+                    Save
                 </button>
             </form>
-        </div>
+        </>
     );
 };
 
-export default PostImageForm;
+export default UpdateProfileImageForm;

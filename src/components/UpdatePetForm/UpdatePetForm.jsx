@@ -72,7 +72,7 @@ const UpdatePetForm = ({ petData }) => {
     // TEMPLATE
     return (
         <>
-            <form id="update-pet-form" class="container">
+            <form id="update-pet-form" className="container">
                 <div className="my-1 form-input-box">
                     <label htmlFor="title">Title:</label>
                     <input
@@ -152,7 +152,7 @@ const UpdatePetForm = ({ petData }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Post
+                    Save
                 </button>
             </form>
         </>

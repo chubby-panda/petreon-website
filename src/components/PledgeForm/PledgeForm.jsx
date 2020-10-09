@@ -43,7 +43,7 @@ const PledgeForm = ({ petId }) => {
             postData().then((response) => {
                 console.log(response);
                 // history.push("/");
-                // window.location.reload();
+                window.location.reload();
             });
         } else {
             console.log("Not all data there");
@@ -52,11 +52,22 @@ const PledgeForm = ({ petId }) => {
 
     return (
         <div className="container">
-            <h1>Make a pledge</h1>
+            <h4>Make a pledge</h4>
             <form id="post-image-form">
                 <div className="my-1 form-input-box">
                     <label htmlFor="amount">Amount:</label>
                     <input type="number" id="amount" onChange={handleChange} />
+                </div>
+                <div className="my-1 form-input-box">
+                    <label htmlFor="anonymous">Remain anonymous?</label>
+                    <select
+                        type="select"
+                        id="anonymous"
+                        onChange={handleChange}
+                    >
+                        <option value="false">No, thanks</option>;
+                        <option value="true">Yes, please</option>;
+                    </select>
                 </div>
 
                 <button
@@ -64,7 +75,7 @@ const PledgeForm = ({ petId }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Upload
+                    Submit pledge
                 </button>
             </form>
         </div>

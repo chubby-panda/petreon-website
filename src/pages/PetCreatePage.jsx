@@ -5,7 +5,7 @@ function PetCreatePage() {
     return (
         <>
             <div className="container">
-                <h1 className="text-primary my-4">Step 1: Start a Fundraiser</h1>
+                <h1 className="text-primary my-4">Start a Fundraiser</h1>
                 <PostPetForm />
             </div>
         </>

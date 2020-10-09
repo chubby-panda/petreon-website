@@ -22,7 +22,8 @@ import Footer from "./components/Footer/Footer";
 import MyPetsPage from "./pages/MyPetsPage";
 import AboutPage from "./pages/AboutPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
-import PostImagePage from "./pages/PostImagePage";
+import PetImagePage from "./pages/PetImagePage";
+import UpdatePetImagePage from "./pages/UpdatePetImagePage";
 
 const App = () => {
     return (
@@ -34,11 +35,12 @@ const App = () => {
                     <Route path="/pet/:petId/pledge/:pledgeId">
                         <PledgePage />
                     </Route>
-                    <PrivateRoute
-                        component={PostImagePage}
-                        path="pet/:petId/images"
-                        exact
-                    />
+                    <Route path="/pet/:petId/images/:imageId">
+                        <UpdatePetImagePage />
+                    </Route>
+                    <Route path="/pet/:petId/images">
+                        <PetImagePage />
+                    </Route>
                     <Route path="/pet/:petId">
                         <PetPage />
                     </Route>

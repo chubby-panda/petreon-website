@@ -12,6 +12,8 @@ const PostPetForm = () => {
         pet_category: "",
     });
 
+    const [errorMessage, setErrorMessage] = useState(null);
+
     const history = useHistory();
 
     const handleChange = (e) => {
@@ -47,32 +49,36 @@ const PostPetForm = () => {
             credentials.pet_name &&
             credentials.description &&
             credentials.med_treatment &&
-            credentials.goal
-            // credentials.pet_category
+            credentials.goal &&
+            credentials.pet_category
         ) {
             console.log("All data is there...");
             postData().then((response) => {
                 console.log(response.id);
-                history.push(`/pet/${response.id}/images`);
+                history.push(`/pet/${response.id}`);
             });
         } else {
             console.log("Not all data there");
+            setErrorMessage("Please fill out all fields");
         }
     };
 
     return (
         <>
             <form id="post-pet-form">
+                {errorMessage !== null ? (
+                    <p class="alert">{errorMessage}</p>
+                ) : null}
                 <div className="my-1 form-input-box">
-                    <label htmlFor="title">Fundraiser Title</label>
+                    <label htmlFor="title">*Fundraiser Title</label>
                     <input type="text" id="title" onChange={handleChange} />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="pet_name">Name of Pet</label>
+                    <label htmlFor="pet_name">*Name of Pet</label>
                     <input type="text" id="pet_name" onChange={handleChange} />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description">*Description</label>
                     <textarea
                         type="text"
                         id="description"
@@ -80,7 +86,7 @@ const PostPetForm = () => {
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="med_treatment">Medical Treatment</label>
+                    <label htmlFor="med_treatment">*Medical Treatment</label>
                     <input
                         type="text"
                         id="med_treatment"
@@ -88,7 +94,7 @@ const PostPetForm = () => {
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="goal">Target (in dollars)</label>
+                    <label htmlFor="goal">*Target (in dollars)</label>
                     <input
                         type="number"
                         id="goal"
@@ -98,39 +104,25 @@ const PostPetForm = () => {
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="pet_category">Species</label>
-                    <input
-                        type="text"
+                    <label htmlFor="pet_category">*Pet Category:</label>
+                    <select
+                        type="select"
                         id="pet_category"
                         onChange={handleChange}
-                    />
+                    >
+                        <option value="dog">dog</option>;
+                        <option value="cat">cat</option>;
+                        <option value="bird">bird</option>;
+                        <option value="other">other</option>;
+                        <option value="rabbit">rabbit</option>;
+                    </select>
                 </div>
-                {/* <div className="pet-icons">
-                    <label>Species</label>
-                    <div className="pet-icons-choices">
-                        <button title="dog" onClick={handlePetChoice}>
-                            <i class="fas fa-dog fa-2x"></i>
-                        </button>
-                        <button title="cat" onClick={handlePetChoice}>
-                            <i class="fas fa-cat fa-2x"></i>
-                        </button>
-                        <button title="bird" onClick={handlePetChoice}>
-                            <i class="fas fa-kiwi-bird fa-2x"></i>
-                        </button>
-                        <button title="rabbit" onClick={handlePetChoice}>
-                            <i class="fas fa-carrot fa-2x"></i>
-                        </button>
-                        <button title="other" onClick={handlePetChoice}>
-                            <i class="fas fa-question fa-2x"></i>
-                        </button>
-                    </div>
-                </div> */}
                 <button
                     className="btn btn-primary my-2"
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Next step
+                    Post
                 </button>
             </form>
         </>

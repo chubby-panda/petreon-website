@@ -23,17 +23,31 @@ function Footer() {
             <div className="separation-container"></div>
             <footer>
                 <div className="footer-content container py-4">
-                    <Link to="/privacy-policy">Privacy Policy</Link>
-                    <div className="social-icons">
-                        <a href="#">
-                            <i className="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fab fa-facebook"></i>
-                        </a>
-                        <a href="#">
-                            <i className="fab fa-instagram"></i>
-                        </a>
+                    <div id="footer-left">
+                        <Link to="/privacy-policy">Privacy Policy</Link>
+                        <br />
+                        <Link to="/about">About Us</Link>
+                        <br />
+                        <br />
+                        <p>Copyright &copy; Petreon 2020</p>
+                    </div>
+                    <div id="footer-right">
+                        <img
+                            className="small-image"
+                            src={window.location.origin + "/logo2.png"}
+                            alt="logo"
+                        />
+                        <div className="social-icons">
+                            <a href="#">
+                                <i className="fab fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i className="fab fa-facebook"></i>
+                            </a>
+                            <a href="#">
+                                <i className="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </footer>

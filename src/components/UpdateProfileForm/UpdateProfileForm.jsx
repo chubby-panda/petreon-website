@@ -12,7 +12,7 @@ const UpdateProfileForm = ({ profileData }) => {
     }, [profileData]);
 
     const handleChange = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         const { id, value } = e.target;
 
         setCredentials((prevCredentials) => ({
@@ -20,9 +20,13 @@ const UpdateProfileForm = ({ profileData }) => {
             [id]: value,
         }));
     };
-    console.log(credentials);
+    // console.log(credentials);
 
     const postData = async () => {
+        const formData = new FormData();
+        Object.keys(credentials).forEach((key) =>
+            formData.append(key, credentials[key])
+        );
         const token = window.localStorage.getItem("token");
         const username = window.localStorage.getItem("username");
         const response = await fetch(
@@ -30,33 +34,30 @@ const UpdateProfileForm = ({ profileData }) => {
             {
                 method: "PUT",
                 headers: {
-                    "Content-Type": "multipart/form-data",
                     "Authorization": `Token ${token}`,
                 },
-                body: JSON.stringify(credentials),
+                body: formData,
             }
         );
-        // debugger;
         return response.json();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submit pressed...");
+        // console.log("Submit pressed...");
         if (credentials.fun_fact) {
-            console.log("All data is there...");
+            // console.log("All data is there...");
             postData().then((response) => {
                 console.log(response);
-                window.location.reload();
+                // window.location.reload();
             });
         } else {
-            console.log("Not all data there");
+            // console.log("Not all data there");
         }
     };
 
     return (
         <>
-            <div className="separation-container"></div>
             <form id="update-profile-form">
                 <h3>Update your profile:</h3>
                 <div className="my-1 form-input-box">
@@ -73,7 +74,7 @@ const UpdateProfileForm = ({ profileData }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Post
+                    Save
                 </button>
             </form>
         </>

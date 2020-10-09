@@ -32,6 +32,8 @@ function ProfilePage(props) {
         setLoading(false);
     }, []);
 
+    console.log(profileData);
+
     console.log(pets);
 
     if (loading) {

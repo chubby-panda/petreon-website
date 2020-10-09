@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useParams } from "react-router-dom";
+import DeletePledgeForm from "../components/DeletePledgeForm/DeletePledgeForm";
 
 const PledgePage = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -9,6 +10,7 @@ const PledgePage = () => {
     const [pledge, setPledge] = useState([]);
     const [pet, setPet] = useState([]);
     let { petId, pledgeId } = useParams();
+    const username = window.localStorage.getItem("username");
 
     const fetchURL = (url, setterFunction) => {
         fetch(`${process.env.REACT_APP_API_URL}${url}`)
@@ -36,14 +38,22 @@ const PledgePage = () => {
         );
     } else {
         return (
-            <>
-                <p>
-                    <Link to={`/profile/${pledge.supporter}`}>
-                        {pledge.supporter}
-                    </Link>{" "}
+            <div id="pledge-detail-container" className="container">
+                <h2>
+                    {pledge.supporter === username ? (
+                        "You"
+                    ) : (
+                        <Link
+                            className="text-primary"
+                            to={`/profile/${pledge.supporter}`}
+                        >
+                            {pledge.supporter}
+                        </Link>
+                    )}{" "}
                     pledged ${pledge.amount} to {pet.pet_name}.
-                </p>
-            </>
+                </h2>
+                {pledge.supporter === username ? <DeletePledgeForm /> : null}
+            </div>
         );
     }
 };

@@ -1,3 +1,8 @@
+#update-pet-form {
+    display: flex;
+    flex-direction: column;
+}
+
 #update-pet-form textarea {
     width: 98%;
 }
@@ -9,4 +14,8 @@
 
 #update-pet-form .form-input-box label {
     margin: 10px;
+}
+
+#update-pet-form button {
+    align-self: flex-end;
 }

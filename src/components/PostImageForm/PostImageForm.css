@@ -1,7 +1,17 @@
 #post-image-form .form-input-box label {
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    padding: 10px;
 }
 
 #post-image-form .form-input-box input {
     border: none;
+}
+
+#post-image-form button {
+    align-self: flex-end;
+}
+
+#post-image-form {
+    display: flex;
+    flex-direction: column;
 }

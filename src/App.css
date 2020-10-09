@@ -85,3 +85,22 @@
 #account-settings-page {
     padding: 0 40px;
 }
+
+#notifications-wrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#notifications-wrapper > div:first-child {
+    background-color: var(--grey-color);
+}
+
+#pledge-detail-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}

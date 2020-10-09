@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import DeletePetForm from "../components/DeletePetForm/DeletePetForm";
 import PetDetailCard from "../components/PetDetailCard/PetDetailCard";
 import PostImageForm from "../components/PostImageForm/PostImageForm";
 import UpdatePetForm from "../components/UpdatePetForm/UpdatePetForm";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Loading from "../components/Loading/Loading";
 
 function PetPage(props) {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -24,6 +27,26 @@ function PetPage(props) {
         }
     };
 
+    let content;
+    if (editPage === true) {
+        content = (
+            <>
+                <UpdatePetForm petData={petData} />
+                <PostImageForm petId={petId} />
+                <DeletePetForm petId={petId} />
+            </>
+        );
+    } else {
+        content = (
+            <PetDetailCard
+                petData={petData}
+                pledges={pledges}
+                images={images}
+                petId={petId}
+            />
+        );
+    }
+
     const fetchURL = (url, setterFunction) => {
         fetch(`${process.env.REACT_APP_API_URL}${url}`)
             .then((results) => {
@@ -39,8 +62,8 @@ function PetPage(props) {
         token != null ? setLoggedIn(true) : setLoggedIn(false);
         const petsIdUrl = `/pets/${petId}`;
         fetchURL(petsIdUrl, setPetData);
-        fetchURL(`${petsIdUrl}/images`, setImages);
-        fetchURL(`${petsIdUrl}/pledges`, setPledges);
+        fetchURL(`${petsIdUrl}/images/`, setImages);
+        fetchURL(`${petsIdUrl}/pledges/`, setPledges);
         setLoading(false);
     }, []);
 
@@ -49,7 +72,10 @@ function PetPage(props) {
     if (loading) {
         return (
             <>
-                <h1>I am loading...</h1>
+                <Sidebar />
+                <div className="content-container">
+                    <Loading />
+                </div>
             </>
         );
     } else {
@@ -65,27 +91,8 @@ function PetPage(props) {
                                 Edit
                             </button>
                         </>
-                    ) : (
-                        <PetDetailCard
-                            petData={petData}
-                            pledges={pledges}
-                            images={images}
-                            petId={petId}
-                        />
-                    )}
-                    {editPage === true ? (
-                        <>
-                            <UpdatePetForm petData={petData} />
-                            <PostImageForm petId={petId} />
-                        </>
-                    ) : (
-                        <PetDetailCard
-                            petData={petData}
-                            pledges={pledges}
-                            images={images}
-                            petId={petId}
-                        />
-                    )}
+                    ) : null}
+                    {content}
                 </div>
             </div>
         );
