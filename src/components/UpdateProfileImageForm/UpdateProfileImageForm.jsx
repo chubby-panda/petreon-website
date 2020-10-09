@@ -12,7 +12,7 @@ const UpdateProfileImageForm = ({ profileData }) => {
     const handleChange = (e) => {
         setProfileImage(e.target.files[0]);
     };
-    // console.log(profileImage);
+    console.log(profileImage);
 
     const postData = async () => {
         const token = window.localStorage.getItem("token");
@@ -26,7 +26,7 @@ const UpdateProfileImageForm = ({ profileData }) => {
             credentials: "omit",
             body: profileImage,
         };
-        const url = `${process.env.REACT_APP_API_URL}/users/profile/${username}/`;
+        const url = `${process.env.REACT_APP_API_URL}/users/profile/${username}/image/`;
         const response = await fetch(url, options);
         debugger;
 
@@ -39,7 +39,7 @@ const UpdateProfileImageForm = ({ profileData }) => {
         if (profileImage) {
             console.log("All data is there...");
             postData().then((response) => {
-                console.log(response);
+                console.log("RESPONSE:", response);
                 // window.location.reload();
             });
         } else {

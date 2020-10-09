@@ -10,6 +10,28 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
     const username = window.localStorage.getItem("username");
     let formContent;
 
+    let slideIndex = 0;
+    if (images.length > 0) {
+        showSlides();
+    }
+
+    function showSlides() {
+        var i;
+        const images = document.getElementsByClassName("mySlides");
+        for (i = 0; i < images.length; i++) {
+            images[i].style.display = "none";
+        }
+        console.log(images);
+        slideIndex++;
+        if (slideIndex > images.length) {
+            slideIndex = 1;
+        }
+        if (images.length > 0) {
+            images[slideIndex - 1].style.display = "block";
+        }
+        setTimeout(showSlides, 4000);
+    }
+
     let isSupporter;
     let i;
     for (i = 0; i < pledges.length; i++) {
@@ -37,7 +59,17 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
         imageContent = (
             <>
                 <div className="pet-detail-content-image">
-                    <img src={images[0].image} alt={petData.title} />
+                    {images.map((img, key) => {
+                        return (
+                            <img
+                                className="mySlides"
+                                key={key}
+                                src={img.image}
+                                alt="image"
+                                onClick={() => console.log(img.id)}
+                            />
+                        );
+                    })}
                 </div>
             </>
         );
