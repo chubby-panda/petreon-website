@@ -2,12 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PetCard from "../components/PetCard/PetCard";
 import HomeAbout from "../components/HomeAbout/HomeAbout";
-import Dashboard from "../components/Dashboard/Dashboard";
-// import { AllPets } from '../data'
+import Footer from "../components/Footer/Footer";
 
 function HomePage() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [petList, setPetList] = useState([]);
+
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        const slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        console.log(slideIndex);
+        if (slides.length > 0) {
+            slides[slideIndex - 1].style.display = "block";
+        }
+        setTimeout(showSlides, 4000);
+    }
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -21,46 +40,53 @@ function HomePage() {
             });
     }, []);
 
-    // if (isLogin()) {
-    //     console.log(localStorage.username)
-    // } else {
-    //     console.log("Not logged in.")
-    // }
-
     return (
         <>
-            {loggedIn ? (
-                <>
-                    <Dashboard petList={petList} />
-                </>
-            ) : (
-                <>
-                    <div id="showcase">
-                        <h1 className="text-secondary">
-                            Save a pet, change a life
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Vitae consequuntur.
-                        </p>
-                        <Link to="/register" className="btn btn-primary my-2">
-                            Get started
-                        </Link>
-                    </div>
-                    <div className="separation-container"></div>
-                    <HomeAbout />
-                    <h1 className="text-primary centered larger-heading">
-                        Latest Pets
+            <div id="showcase">
+                <div id="showcase-text">
+                    <h1 className="text-secondary">
+                        Save a pet, change a life
                     </h1>
-                    <div className="grey-background" id="pet-list">
-                        {petList.map((projectData, key) => {
-                            return (
-                                <PetCard key={key} projectData={projectData} />
-                            );
-                        })}
-                    </div>
-                </>
-            )}
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Vitae consequuntur.
+                    </p>
+                    <Link to="/about" className="btn btn-primary my-2">
+                        Learn more
+                    </Link>
+                </div>
+                <div id="showcase-image">
+                    <img
+                        className="mySlides"
+                        src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1"
+                        alt="dogs playing"
+                    />
+                    <img
+                        className="mySlides"
+                        src="https://images.unsplash.com/photo-1570347929626-2bbc8032d98b?ixlib=rb-1.2.1"
+                        alt="cat"
+                    />
+                    <img
+                        className="mySlides"
+                        src="https://images.unsplash.com/photo-1532353949707-2e77707ee8a7?ixlib=rb-1.2.1"
+                        alt="dog"
+                    />
+                </div>
+            </div>
+            <div className="separation-container"></div>
+            <HomeAbout />
+            <div className="fullpage-dashed-line"></div>
+            <div className="separation-container"></div>
+
+            <h1 className="text-primary centered larger-heading">
+                Latest Pets
+            </h1>
+            <div id="pet-list">
+                {petList.map((projectData, key) => {
+                    return <PetCard key={key} projectData={projectData} />;
+                })}
+            </div>
+            <Footer />
         </>
     );
 }

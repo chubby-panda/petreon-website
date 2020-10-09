@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NotificationCard from "../components/NotificationCard/NotificationCard";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Loading from "../components/Loading/Loading";
 import { useParams } from "react-router-dom";
 
 function NotificationsPage(props) {
@@ -26,13 +28,18 @@ function NotificationsPage(props) {
     if (loading) {
         return (
             <>
-                <h1>I am loading...</h1>
+                <Sidebar />
+                <div className="content-container">
+                    <Loading />
+                </div>
             </>
         );
     } else {
         return (
             <>
-                <div>
+                <Sidebar />
+
+                <div className="content-container">
                     <ul>
                         {notifications.map((notification, key) => {
                             return (

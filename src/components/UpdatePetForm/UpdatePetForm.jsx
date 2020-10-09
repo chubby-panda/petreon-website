@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import "./UpdatePetForm.css";
 
-const UpdatePetForm = () => {
-    // VARIABLES
-    const [credentials, setCredentials] = useState({
-        title: "",
-        pet_name: "",
-        description: "",
-        med_treatment: "",
-        goal: "",
-        pet_category: "",
-        active: "",
-    });
+const UpdatePetForm = ({ petData }) => {
+    const [credentials, setCredentials] = useState();
     let { petId } = useParams();
     const history = useHistory();
 
-    // METHODS
+    useEffect(() => {
+        setCredentials({
+            title: petData.title,
+            pet_name: petData.pet_name,
+            description: petData.description,
+            med_treatment: petData.med_treatment,
+            goal: petData.goal,
+            pet_category: petData.pet_category,
+            active: petData.active,
+        });
+    }, [petData]);
+
     const handleChange = (e) => {
         const { id, value } = e.target;
 
@@ -42,6 +45,7 @@ const UpdatePetForm = () => {
             }
         );
         return response.json();
+        console.log(response);
     };
 
     const handleSubmit = (e) => {
@@ -58,7 +62,7 @@ const UpdatePetForm = () => {
             console.log("All data is there...");
             postData().then((response) => {
                 console.log(response);
-                // history.push("/");
+                window.location.reload();
             });
         } else {
             console.log("Not all data there");
@@ -68,18 +72,29 @@ const UpdatePetForm = () => {
     // TEMPLATE
     return (
         <>
-            <form>
+            <form id="update-pet-form" class="container">
                 <div className="my-1 form-input-box">
                     <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" onChange={handleChange} />
+                    <input
+                        defaultValue={petData.title}
+                        type="text"
+                        id="title"
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="pet_name">Pet Name:</label>
-                    <input type="text" id="pet_name" onChange={handleChange} />
+                    <input
+                        defaultValue={petData.pet_name}
+                        type="text"
+                        id="pet_name"
+                        onChange={handleChange}
+                    />
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="description">Description:</label>
-                    <input
+                    <textarea
+                        defaultValue={petData.description}
                         type="text"
                         id="description"
                         onChange={handleChange}
@@ -88,6 +103,7 @@ const UpdatePetForm = () => {
                 <div className="my-1 form-input-box">
                     <label htmlFor="med_treatment">Medical Treatment:</label>
                     <input
+                        defaultValue={petData.med_treatment}
                         type="text"
                         id="med_treatment"
                         onChange={handleChange}
@@ -96,6 +112,7 @@ const UpdatePetForm = () => {
                 <div className="my-1 form-input-box">
                     <label htmlFor="goal">Goal:</label>
                     <input
+                        defaultValue={petData.goal}
                         type="number"
                         id="goal"
                         min="1"
@@ -105,7 +122,12 @@ const UpdatePetForm = () => {
                 </div>
                 <div className="my-1 form-input-box">
                     <label htmlFor="pet_category">Pet Category:</label>
-                    <select id="pet_category" onChange={handleChange}>
+                    <select
+                        defaultValue={petData.pet_category}
+                        type="select"
+                        id="pet_category"
+                        onChange={handleChange}
+                    >
                         <option value="dog">dog</option>;
                         <option value="cat">cat</option>;
                         <option value="bird">bird</option>;
@@ -114,10 +136,15 @@ const UpdatePetForm = () => {
                     </select>
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="active">Active:</label>
-                    <select id="active" onChange={handleChange}>
-                        <option value="true">true</option>;
-                        <option value="false">false</option>;
+                    <label htmlFor="active">Status</label>
+                    <select
+                        defaultValue={petData.active}
+                        type="select"
+                        id="active"
+                        onChange={handleChange}
+                    >
+                        <option value="true">Open</option>;
+                        <option value="false">Closed</option>;
                     </select>
                 </div>
                 <button

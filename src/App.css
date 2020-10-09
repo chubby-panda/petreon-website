@@ -7,7 +7,13 @@
 }
 
 #my-pets-page {
-    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 30px 10px;
+}
+
+#pets-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -15,7 +21,22 @@
 }
 
 #pet-detail {
-    padding: 20px 0;
+    padding: 20px 50px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile-detail {
+    padding: 0 50px;
+}
+
+#profile-pets {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 30px 10px;
 }
 
 #showcase {
@@ -23,9 +44,19 @@
     background-color: var(--dark-color);
     color: var(--white-color);
     display: flex;
-    flex-direction: column;
-    padding-left: 100px;
+    flex-direction: row;
+    padding: 0 50px;
     justify-content: center;
+    align-items: center;
+}
+
+.mySlides {
+    display: none;
+}
+
+#showcase-image img {
+    width: 450px;
+    filter: grayscale(35%);
 }
 
 #showcase h1 {
@@ -45,4 +76,12 @@
 
 .separation-container {
     height: 70px;
+}
+
+#about-page-text {
+    margin-bottom: 40px;
+}
+
+#account-settings-page {
+    padding: 0 40px;
 }

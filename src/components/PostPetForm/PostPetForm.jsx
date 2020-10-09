@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import "./PostPetForm.css";
 
 const PostPetForm = () => {
     const [credentials, setCredentials] = useState({
@@ -9,7 +10,6 @@ const PostPetForm = () => {
         med_treatment: "",
         goal: "",
         pet_category: "",
-        active: true,
     });
 
     const history = useHistory();
@@ -45,7 +45,6 @@ const PostPetForm = () => {
         if (
             credentials.title &&
             credentials.pet_name &&
-            // credentials.image &&
             credentials.description &&
             credentials.med_treatment &&
             credentials.goal
@@ -53,8 +52,8 @@ const PostPetForm = () => {
         ) {
             console.log("All data is there...");
             postData().then((response) => {
-                console.log(response);
-                // history.push("/");
+                console.log(response.id);
+                history.push(`/pet/${response.id}/images`);
             });
         } else {
             console.log("Not all data there");
@@ -63,25 +62,25 @@ const PostPetForm = () => {
 
     return (
         <>
-            <form>
+            <form id="post-pet-form">
                 <div className="my-1 form-input-box">
-                    <label htmlFor="title">Title:</label>
+                    <label htmlFor="title">Fundraiser Title</label>
                     <input type="text" id="title" onChange={handleChange} />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="pet_name">Pet Name:</label>
+                    <label htmlFor="pet_name">Name of Pet</label>
                     <input type="text" id="pet_name" onChange={handleChange} />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="description">Description:</label>
-                    <input
+                    <label htmlFor="description">Description</label>
+                    <textarea
                         type="text"
                         id="description"
                         onChange={handleChange}
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="med_treatment">Medical Treatment:</label>
+                    <label htmlFor="med_treatment">Medical Treatment</label>
                     <input
                         type="text"
                         id="med_treatment"
@@ -89,7 +88,7 @@ const PostPetForm = () => {
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="goal">Goal:</label>
+                    <label htmlFor="goal">Target (in dollars)</label>
                     <input
                         type="number"
                         id="goal"
@@ -99,22 +98,39 @@ const PostPetForm = () => {
                     />
                 </div>
                 <div className="my-1 form-input-box">
-                    <label htmlFor="pet_category">Pet Category:</label>
-                    <select id="pet_category" onChange={handleChange}></select>
+                    <label htmlFor="pet_category">Species</label>
+                    <input
+                        type="text"
+                        id="pet_category"
+                        onChange={handleChange}
+                    />
                 </div>
-                <div className="my-1 form-input-box">
-                    <label htmlFor="active">Active:</label>
-                    <select id="active" onChange={handleChange}>
-                        <option value="true">true</option>;
-                        <option value="false">false</option>;
-                    </select>
-                </div>
+                {/* <div className="pet-icons">
+                    <label>Species</label>
+                    <div className="pet-icons-choices">
+                        <button title="dog" onClick={handlePetChoice}>
+                            <i class="fas fa-dog fa-2x"></i>
+                        </button>
+                        <button title="cat" onClick={handlePetChoice}>
+                            <i class="fas fa-cat fa-2x"></i>
+                        </button>
+                        <button title="bird" onClick={handlePetChoice}>
+                            <i class="fas fa-kiwi-bird fa-2x"></i>
+                        </button>
+                        <button title="rabbit" onClick={handlePetChoice}>
+                            <i class="fas fa-carrot fa-2x"></i>
+                        </button>
+                        <button title="other" onClick={handlePetChoice}>
+                            <i class="fas fa-question fa-2x"></i>
+                        </button>
+                    </div>
+                </div> */}
                 <button
                     className="btn btn-primary my-2"
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Post
+                    Next step
                 </button>
             </form>
         </>

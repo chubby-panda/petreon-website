@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import PetCard from "../components/PetCard/PetCard";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Loading from "../components/Loading/Loading";
+import UpdateProfileForm from "../components/UpdateProfileForm/UpdateProfileForm";
 
-function MyPetsPage(props) {
+const AccountSettingsPage = () => {
     const [loading, setLoading] = useState(true);
-    const [pets, setPets] = useState([]);
-    let { username } = useParams();
+    const [profileData, setProfileData] = useState([]);
+    const [accountData, setAccountData] = useState([]);
+    const username = window.localStorage.getItem("username");
 
     const fetchURL = (url, setterFunction) => {
         fetch(`${process.env.REACT_APP_API_URL}${url}`)
@@ -20,7 +20,8 @@ function MyPetsPage(props) {
     };
 
     useEffect(() => {
-        fetchURL(`/users/${username}/pets`, setPets);
+        fetchURL(`/users/account/${username}`, setAccountData);
+        fetchURL(`/users/profile/${username}`, setProfileData);
         setLoading(false);
     }, []);
 
@@ -28,7 +29,7 @@ function MyPetsPage(props) {
         return (
             <>
                 <Sidebar />
-                <div className="content-container">
+                <div id="account-settings-page" className="content-container">
                     <Loading />
                 </div>
             </>
@@ -37,14 +38,13 @@ function MyPetsPage(props) {
         return (
             <>
                 <Sidebar />
-                <div id="my-pets-page" className="content-container">
-                    {pets.map((projectData, key) => {
-                        return <PetCard key={key} projectData={projectData} />;
-                    })}
+                <div id="account-settings-page" className="content-container">
+                    <h1>Update your account details:</h1>
+                    <UpdateProfileForm profileData={profileData} />
                 </div>
             </>
         );
     }
-}
+};
 
-export default MyPetsPage;
+export default AccountSettingsPage;

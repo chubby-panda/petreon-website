@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 import "./PetCard.css";
 
 const PetCard = (props) => {
@@ -24,11 +25,11 @@ const PetCard = (props) => {
     console.log(images);
 
     if (images.length < 1) {
-        return <h1>loading...</h1>;
+        return <div className="pet-card"></div>;
     } else {
         return (
-            <div className="pet-card">
-                <Link to={`/pet/${projectData.id}`}>
+            <Link to={`/pet/${projectData.id}`}>
+                <div className="pet-card">
                     <div className="pet-card-text">
                         <h2 className="sub-text">{projectData.title}</h2>
                         <small>{date}</small>
@@ -36,9 +37,11 @@ const PetCard = (props) => {
                             {projectData.pet_category}
                         </small>
                     </div>
-                    <img src={images[0].image} alt={projectData.title} />
-                </Link>
-            </div>
+                    <div className="pet-card-image">
+                        <img src={images[0].image} alt={projectData.title} />
+                    </div>
+                </div>
+            </Link>
         );
     }
 };

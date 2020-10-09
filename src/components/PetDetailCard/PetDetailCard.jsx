@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import PledgeForm from "../PledgeForm/PledgeForm";
+import Loading from "../Loading/Loading";
 import "./PetDetailCard.css";
 
 const PetDetailCard = ({ petData, pledges, images, petId }) => {
     const username = window.localStorage.getItem("username");
     let pledge_content;
-    console.log(pledges);
     if (pledges.length > 0) {
         pledge_content = (
             <ul>
                 {pledges.map((pledgeData, key) => {
-                    if (pledgeData.supporter == true) {
+                    if (pledgeData.supporter === true) {
                         return (
                             <Link to="/" key={key}>
                                 {`$${pledgeData.amount} from an anonymous supporter`}
@@ -34,18 +34,17 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
         pledge_content = <p>No pledges.</p>;
     }
 
-    // console.log(pledges);
-
     let date;
-    if (petData.date_created != undefined) {
+    if (petData.date_created !== undefined) {
         date = new Date(petData.date_created).toDateString();
     }
 
     if (petData.length === 0 || images.length === 0) {
         return (
-            <>
-                <h1>I am loading pet detail card...</h1>
-            </>
+            <div className="pet-detail-card">
+                <div className="separation-container"></div>
+                <Loading />
+            </div>
         );
     } else {
         return (
@@ -53,13 +52,20 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
                 <div className="pet-detail-content">
                     <div className="pet-detail-content-text">
                         <h2>{petData.title}</h2>
+                        <small>
+                            {`Posted ${date} | `}
+                            <Link
+                                className="text-primary"
+                                to={`/profile/${petData.owner}`}
+                            >{`${petData.owner}`}</Link>
+                        </small>
                         <p>{petData.description}</p>
-                        <p>{petData.owner}</p>
-                        <p>{`Created at: ${date}`}</p>
-                        <p>{`Status: ${
+                        {/* <p>{petData.owner}</p>
+                        <p>{`Posted ${date}`}</p> */}
+                        <p className="text-primary">{`Status: ${
                             petData.active ? "Open" : "Expired"
                         }`}</p>
-                        <p>{`Goal: $${petData.goal}, Pledged amount: $${petData.pledged_amount}`}</p>
+                        {/* <p>{`Goal: $${petData.goal}, Pledged amount: $${petData.pledged_amount}`}</p> */}
                     </div>
                     <div className="pet-detail-content-image">
                         <img src={images[0].image} alt={petData.title} />
@@ -71,7 +77,7 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
                 />
                 <div className="pet-detail-pledges">
                     <h3>Pledges:</h3>
-                    {petData.owner != username ? (
+                    {petData.owner !== username ? (
                         <PledgeForm petId={petId} />
                     ) : null}
 

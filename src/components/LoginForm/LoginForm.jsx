@@ -47,9 +47,7 @@ const LoginForm = () => {
                         "username",
                         credentials.username
                     );
-                    // window.localStorage.setItem('id', response.id)
-                    window.location.reload();
-                    history.push("/");
+                    history.push("/dashboard");
                 }
             });
         }

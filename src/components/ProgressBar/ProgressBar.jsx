@@ -9,10 +9,10 @@ const ProgressBar = ({ goal, pledged_amount }) => {
     };
     return (
         <div id="progress-container">
-            <h3 className="sub-text">Progress: {progressPercentage}</h3>
             <div id="progress-bar">
                 <div style={progressStyle} id="progress"></div>
             </div>
+            <h3 className="sub-text">Progress: {progressPercentage}</h3>
         </div>
     );
 };

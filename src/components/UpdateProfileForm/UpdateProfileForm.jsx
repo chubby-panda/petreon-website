@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./UpdateProfileForm.css";
 
-const UpdateProfileForm = () => {
-    const defaultImage =
-        "https://petreon-assets.s3.us-east-2.amazonaws.com/default.jpg";
-    const [credentials, setCredentials] = useState({
-        fun_fact: "",
-    });
-    const history = useHistory();
+const UpdateProfileForm = ({ profileData }) => {
+    const [credentials, setCredentials] = useState();
+
+    useEffect(() => {
+        setCredentials({
+            fun_fact: profileData.fun_fact,
+        });
+    }, [profileData]);
 
     const handleChange = (e) => {
+        // e.preventDefault();
         const { id, value } = e.target;
 
         setCredentials((prevCredentials) => ({
@@ -18,12 +20,9 @@ const UpdateProfileForm = () => {
             [id]: value,
         }));
     };
+    console.log(credentials);
 
     const postData = async () => {
-        const formData = new FormData();
-        Object.keys(credentials).forEach((key) =>
-            formData.append(key, credentials[key])
-        );
         const token = window.localStorage.getItem("token");
         const username = window.localStorage.getItem("username");
         const response = await fetch(
@@ -31,11 +30,13 @@ const UpdateProfileForm = () => {
             {
                 method: "PUT",
                 headers: {
+                    "Content-Type": "multipart/form-data",
                     "Authorization": `Token ${token}`,
                 },
-                body: formData,
+                body: JSON.stringify(credentials),
             }
         );
+        // debugger;
         return response.json();
     };
 
@@ -61,6 +62,7 @@ const UpdateProfileForm = () => {
                 <div className="my-1 form-input-box">
                     <label htmlFor="fun_fact">Fun Fact:</label>
                     <textarea
+                        defaultValue={profileData.fun_fact}
                         type="text"
                         id="fun_fact"
                         onChange={handleChange}

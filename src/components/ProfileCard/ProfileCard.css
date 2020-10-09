@@ -1,0 +1,17 @@
+#profile-detail-card {
+    border: 3px solid var(--secondary-color);
+    color: var(--dark-color);
+    border-radius: 50px;
+    width: 90%;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#profile-detail-card .profile-detail-image {
+    width: 200px;
+}
+
+#profile-detail-card .profile-detail-image img {
+    width: 100%;
+}

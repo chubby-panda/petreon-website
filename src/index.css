@@ -36,12 +36,12 @@ a {
 .container {
     max-width: 950px;
     margin: auto;
-    padding: 0 20px;
 }
 
 .content-container {
     margin-left: 200px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .grey-background {
@@ -176,16 +176,27 @@ a {
     background-color: var(--secondary-color-muted);
 }
 
-input {
+input,
+textarea,
+select {
     padding: 8px;
     border-radius: 10px;
     border: 1px solid var(--grey-color);
     background-color: var(--grey-color);
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
-input:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border: 1px solid var(--secondary-color);
+}
+
+textarea {
+    height: 100px;
 }
 
 .alert {
@@ -203,4 +214,10 @@ input:focus {
 
 .reverse-flex {
     flex-direction: row-reverse;
+}
+
+.fullpage-dashed-line {
+    height: 0;
+    width: 100%;
+    border-bottom: 3px dashed var(--primary-color);
 }

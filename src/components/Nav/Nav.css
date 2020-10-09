@@ -1,13 +1,13 @@
 nav {
     background-color: var(--white-color);
     border-bottom: 1px solid var(--dark-color);
-    padding: 0 50px;
+    padding-right: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     height: 70px;
-    width: 92.3vw;
+    width: 97vw;
     z-index: 10;
 }
 
@@ -16,7 +16,6 @@ nav h1 {
     font-size: 1.5em;
     margin: 10px;
     font-weight: 600;
-
 }
 
 nav a {
@@ -51,4 +50,9 @@ nav button {
 
 .nav-link:focus {
     outline: none;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 20px;
 }

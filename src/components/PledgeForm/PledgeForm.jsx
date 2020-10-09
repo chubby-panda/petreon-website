@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
 
 const PledgeForm = ({ petId }) => {
     const [credentials, setCredentials] = useState({
@@ -8,7 +8,7 @@ const PledgeForm = ({ petId }) => {
         anonymous: false,
     });
 
-    const history = useHistory();
+    // const history = useHistory();
     const token = window.localStorage.getItem("token");
 
     const handleChange = (e) => {

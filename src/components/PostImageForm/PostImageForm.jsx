@@ -12,8 +12,6 @@ const PostImageForm = ({ petId }) => {
     };
 
     const postData = async () => {
-        // const formData = new FormData();
-        // formData.append("image", imageFile);
         const token = window.localStorage.getItem("token");
         const options = {
             method: "POST",
@@ -37,7 +35,7 @@ const PostImageForm = ({ petId }) => {
             console.log("All data is there...");
             postData().then((response) => {
                 console.log(response);
-                // history.push("/");
+                history.push(`/pet/${petId}`);
             });
         } else {
             console.log("Not all data there");
@@ -63,7 +61,7 @@ const PostImageForm = ({ petId }) => {
                     type="submit"
                     onClick={handleSubmit}
                 >
-                    Upload
+                    Submit
                 </button>
             </form>
         </div>
