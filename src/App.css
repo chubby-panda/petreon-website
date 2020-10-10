@@ -144,3 +144,12 @@
     display: flex;
     justify-content: flex-end;
 }
+
+#messages-page {
+    padding: 0 30px;
+    width: 70%;
+}
+
+#messages-page p {
+    line-height: 1.5;
+}

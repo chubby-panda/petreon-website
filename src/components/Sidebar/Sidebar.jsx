@@ -27,7 +27,7 @@ const Sidebar = () => {
                     <Link to="/pet-create">New Project</Link>
                     <Link to={`/profile/${username}/pets`}>My Pets</Link>
                     <Link to="/notifications">Notifications</Link>
-                    <Link to="/">Messages</Link>
+                    <Link to="/messages">Messages</Link>
                     <Link to={`/profile/${username}`}>Profile</Link>
                     <Link to="/account-settings">Account Settings</Link>
                     <div className="profile-image-container">

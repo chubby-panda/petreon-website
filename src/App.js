@@ -24,6 +24,7 @@ import AboutPage from "./pages/AboutPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
 import PetImagePage from "./pages/PetImagePage";
 import UpdatePetImagePage from "./pages/UpdatePetImagePage";
+import MessagesPage from "./pages/MessagesPage";
 
 const App = () => {
     return (
@@ -53,6 +54,11 @@ const App = () => {
                     <PrivateRoute
                         component={NotificationsPage}
                         path="/notifications"
+                        exact
+                    />
+                    <PrivateRoute
+                        component={MessagesPage}
+                        path="/messages"
                         exact
                     />
                     <PrivateRoute
