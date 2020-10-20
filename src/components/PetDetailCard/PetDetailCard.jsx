@@ -47,7 +47,11 @@ const PetDetailCard = ({ petData, pledges, images, petId }) => {
                 <h1 className="text-primary">Thank you for your pledge!</h1>
             );
         } else {
-            formContent = <PledgeForm petId={petId} />;
+            if (username != undefined) {
+                formContent = <PledgeForm petId={petId} />;
+            } else {
+                formContent = <h1>These are the pledges so far...</h1>;
+            }
         }
     } else {
         formContent = <h1>These are the pledges so far...</h1>;

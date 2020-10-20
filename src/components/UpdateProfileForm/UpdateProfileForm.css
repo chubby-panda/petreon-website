@@ -11,3 +11,19 @@
 #update-profile-form label {
     margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 700px) {
+    #update-profile-form textarea {
+        height: 60px;
+        width: 95%;
+    }
+
+    #update-profile-form .form-input-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #update-profile-form label {
+        margin: 10px 5px;
+    }
+}

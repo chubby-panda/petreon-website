@@ -9,7 +9,7 @@
 }
 
 #homepage-about .image-container {
-    width: 1000px;
+    width: 100%;
 }
 
 #homepage-about .image-container img {
@@ -27,4 +27,24 @@
 
 #homepage-about-3 .homepage-about-inner-text {
     padding-left: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+    #homepage-about-1 {
+        margin: 0;
+    }
+
+    #homepage-about-2 .homepage-about-inner-text,
+    #homepage-about-4 .homepage-about-inner-text {
+        padding: 20px;
+    }
+
+    #homepage-about-3 .homepage-about-inner-text {
+        padding: 20px;
+    }
+    .homepage-about-inner {
+        flex-direction: column;
+        margin-bottom: 0;
+        text-align: center;
+    }
 }

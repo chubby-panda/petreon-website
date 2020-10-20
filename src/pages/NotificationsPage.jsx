@@ -3,6 +3,8 @@ import NotificationCard from "../components/NotificationCard/NotificationCard";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Loading from "../components/Loading/Loading";
 import { useParams } from "react-router-dom";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 function NotificationsPage(props) {
     const [loading, setLoading] = useState(true);
@@ -52,6 +54,7 @@ function NotificationsPage(props) {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div className="content-container">
                     <Loading />
                 </div>
@@ -61,8 +64,9 @@ function NotificationsPage(props) {
         return (
             <>
                 <Sidebar />
-
+                <SidebarMobile />
                 <div className="content-container">{notificationsContent}</div>
+                {/* <Footer /> */}
             </>
         );
     }

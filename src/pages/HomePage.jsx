@@ -74,7 +74,6 @@ function HomePage() {
             </div>
             <div className="separation-container"></div>
             <HomeAbout />
-            <div className="fullpage-dashed-line"></div>
             <div className="separation-container"></div>
 
             <h1 className="text-primary centered larger-heading">

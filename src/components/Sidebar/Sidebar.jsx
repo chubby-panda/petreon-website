@@ -19,10 +19,20 @@ const Sidebar = () => {
             });
     }, []);
 
+    // const toggleMenu = (e) => {
+    //     let menuItems = e.target.parentElement.parentElement.children;
+    //     console.log(menuItems);
+    //     menuItems.addClass("display");
+    //     // console.log(e.target.parentElement.parentElement.children[1]);
+    // };
+
     return (
         <>
             <aside id="dashboard-sidebar">
                 <div className="sidebar-menu">
+                    {/* <button id="dropdown-btn" onClick={toggleMenu}>
+                        <i class="fas fa-bars fa-2x"></i>
+                    </button> */}
                     <Link to="/dashboard">Dashboard</Link>
                     <Link to="/pet-create">New Project</Link>
                     <Link to={`/profile/${username}/pets`}>My Pets</Link>

@@ -21,7 +21,7 @@ function Nav() {
     return (
         <>
             <nav>
-                <Link to="/">
+                <Link id="logo-link" to="/">
                     {/* <h1>Petreon</h1> */}
                     <img
                         className="logo"

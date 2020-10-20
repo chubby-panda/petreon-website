@@ -1,10 +1,13 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 const MessagesPage = () => {
     return (
         <>
             <Sidebar />
+            <SidebarMobile />
             <div id="messages-page" className="content-container">
                 <h1>Messaging app, coming soon!</h1>
                 <p>
@@ -23,6 +26,7 @@ const MessagesPage = () => {
                     src={window.location.origin + "/logo1.png"}
                 />
             </div>
+            {/* <Footer /> */}
         </>
     );
 };

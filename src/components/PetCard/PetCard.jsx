@@ -29,7 +29,7 @@ const PetCard = (props) => {
             <Link to={`/pet/${projectData.id}`}>
                 <div className="pet-card">
                     <div className="pet-card-text">
-                        <h2 className="sub-text">{projectData.title}</h2>
+                        <h2>{projectData.title}</h2>
                         <small>{date}</small>
                         <small className="text-primary text-upper mx-1">
                             {projectData.pet_category}

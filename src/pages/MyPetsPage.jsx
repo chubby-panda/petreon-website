@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import PetCard from "../components/PetCard/PetCard";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Loading from "../components/Loading/Loading";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 function MyPetsPage(props) {
     const [loading, setLoading] = useState(true);
@@ -28,6 +30,7 @@ function MyPetsPage(props) {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div className="content-container">
                     <Loading />
                 </div>
@@ -37,11 +40,13 @@ function MyPetsPage(props) {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div id="my-pets-page" className="content-container">
                     {pets.map((projectData, key) => {
                         return <PetCard key={key} projectData={projectData} />;
                     })}
                 </div>
+                {/* <Footer /> */}
             </>
         );
     }

@@ -49,6 +49,12 @@ const UpdateProfileImageForm = ({ profileData }) => {
 
     return (
         <>
+            <h3>Change your profile picture:</h3>
+            <small>
+                The option to update profile image is temporarily out of
+                service. We'll have this working soon. Thank you for your
+                patience.
+            </small>
             <form id="update-profile-image-form">
                 <div className="my-1 form-input-box">
                     <label htmlFor="image">Profile Image:</label>

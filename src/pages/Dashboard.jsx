@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PetCard from "../components/PetCard/PetCard";
 import Sidebar from "../components/Sidebar/Sidebar";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 function Dashboard() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -21,6 +23,7 @@ function Dashboard() {
     return (
         <>
             <Sidebar />
+            <SidebarMobile />
             <div className="content-container">
                 <h1 className="text-primary centered larger-heading">
                     Latest Pets

@@ -1,12 +1,12 @@
 .pet-card {
     width: 90%;
     margin: 0 auto;
-    /* background-color: var(--dark-color); */
+    background-color: var(--grey-color);
     padding: 0;
     display: flex;
     flex-direction: column;
+    padding: 15px;
     border: 1px solid var(--grey-color);
-    /* align-content: space-between; */
 }
 
 .pet-card-image {
@@ -24,10 +24,5 @@
 .pet-card-text {
     padding: 10px 20px;
     text-align: center;
-    height: 90px;
+    height: fit-content;
 }
-
-/* .pet-card-text h2 {
-    font-size: 1.1rem;
-    font-weight: 900;
-} */

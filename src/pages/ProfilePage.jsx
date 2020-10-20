@@ -4,6 +4,8 @@ import ProfileCard from "../components/ProfileCard/ProfileCard";
 import PetCard from "../components/PetCard/PetCard";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Loading from "../components/Loading/Loading";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 function ProfilePage(props) {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -40,6 +42,7 @@ function ProfilePage(props) {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div className="content-container">
                     <Loading />
                 </div>
@@ -51,12 +54,14 @@ function ProfilePage(props) {
                 {loggedIn ? (
                     <>
                         <Sidebar />
+                        <SidebarMobile />
                         <div id="profile-detail" className="content-container">
                             <ProfileCard
                                 profileData={profileData}
                                 accountData={accountData}
                             />
                             <div id="pets-list">
+                                <h2>{username}'s Pets</h2>
                                 {pets.map((projectData, key) => {
                                     return (
                                         <PetCard
@@ -67,12 +72,14 @@ function ProfilePage(props) {
                                 })}
                             </div>
                         </div>
+                        {/* <Footer /> */}
                     </>
                 ) : (
                     <>
                         <div id="profile-detail" className="container">
                             <ProfileCard profileData={profileData} />
                             <div id="profile-pets">
+                                <h2>{username}'s Pets</h2>
                                 {pets.map((projectData, key) => {
                                     return (
                                         <PetCard
@@ -83,6 +90,7 @@ function ProfilePage(props) {
                                 })}
                             </div>
                         </div>
+                        {/* <Footer /> */}
                     </>
                 )}
             </>

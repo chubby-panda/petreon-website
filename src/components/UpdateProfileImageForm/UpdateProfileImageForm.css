@@ -1,3 +1,26 @@
 #update-profile-image-form label {
     margin-right: 10px;
 }
+
+@media only screen and (max-width: 700px) {
+    #update-profile-image-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #update-profile-image-form .form-input-box label {
+        padding: 10px 5px;
+    }
+
+    #update-profile-image-form input#profile_img {
+        margin-top: 10px;
+        width: 95%;
+    }
+
+    #update-profile-image-form button,
+    #update-profile-image-form h3 {
+        align-self: flex-start;
+        margin: 5px 0;
+    }
+}

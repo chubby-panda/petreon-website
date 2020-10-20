@@ -2,7 +2,7 @@
     margin: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 40px;
     padding: 30px 10px;
 }
 
@@ -28,6 +28,10 @@
     align-items: center;
 }
 
+#pet-create-page {
+    padding-left: 50px;
+}
+
 #profile-detail {
     padding: 0 50px;
 }
@@ -50,8 +54,16 @@
     align-items: center;
 }
 
+#showcase a {
+    display: block;
+}
+
 .mySlides {
     display: none;
+}
+
+#showcase-image {
+    padding: 0 20px;
 }
 
 #showcase-image img {
@@ -152,4 +164,114 @@
 
 #messages-page p {
     line-height: 1.5;
+}
+
+@media only screen and (max-width: 700px) {
+    .separation-container {
+        display: none;
+    }
+    #showcase {
+        flex-direction: column;
+        padding: 20px 50px;
+        justify-content: space-around;
+    }
+
+    #showcase-text {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    #showcase-image img {
+        width: 100%;
+    }
+
+    #showcase h1 {
+        font-size: 2.5rem;
+    }
+
+    #showcase p {
+        font-size: 1.2rem;
+    }
+
+    #showcase a.btn {
+        display: block;
+    }
+
+    #pet-list {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 10px;
+    }
+
+    #pet-create-page,
+    #my-pets-page,
+    #profile-pets,
+    #pets-list {
+        padding: 20px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul#notifications-wrapper {
+        padding: 0;
+        width: 100%;
+    }
+
+    #messages-page {
+        width: 85%;
+        padding: 30px;
+    }
+
+    #messages-page img {
+        width: 80%;
+    }
+
+    #profile-detail {
+        padding: 0;
+    }
+
+    #account-settings-page {
+        padding: 0 30px;
+    }
+
+    #pet-detail {
+        padding: 20px 0;
+    }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 900px) {
+    #pet-list {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #showcase {
+        height: 50vh;
+    }
+
+    #showcase-image {
+        padding: 0 20px;
+    }
+
+    #showcase-image img {
+        width: 300px;
+        filter: grayscale(35%);
+    }
+
+    #showcase h1 {
+        font-size: 2.5rem;
+    }
+
+    #showcase p {
+        font-size: 1.2rem;
+    }
 }

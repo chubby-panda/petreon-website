@@ -4,6 +4,8 @@ import Loading from "../components/Loading/Loading";
 import UpdateProfileForm from "../components/UpdateProfileForm/UpdateProfileForm";
 import UpdateProfileImageForm from "../components/UpdateProfileImageForm/UpdateProfileImageForm";
 import UpdatePasswordForm from "../components/UpdatePasswordForm/UpdatePasswordForm";
+import SidebarMobile from "../components/SidebarMobile/SidebarMobile";
+import Footer from "../components/Footer/Footer";
 
 const AccountSettingsPage = () => {
     const [loading, setLoading] = useState(true);
@@ -31,6 +33,7 @@ const AccountSettingsPage = () => {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div id="account-settings-page" className="content-container">
                     <Loading />
                 </div>
@@ -40,17 +43,14 @@ const AccountSettingsPage = () => {
         return (
             <>
                 <Sidebar />
+                <SidebarMobile />
                 <div id="account-settings-page" className="content-container">
                     <h1>Account Settings</h1>
                     <UpdateProfileForm profileData={profileData} />
                     <UpdatePasswordForm username={username} />
-                    <small>
-                        The option to update profile image is temporarily out of
-                        service. We'll have this working soon. Thank you for
-                        your patience.
-                    </small>
                     <UpdateProfileImageForm profileData={profileData} />
                 </div>
+                {/* <Footer /> */}
             </>
         );
     }

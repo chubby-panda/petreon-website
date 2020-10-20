@@ -1,0 +1,43 @@
+/* Don't show on big screens (>700px) */
+#dashboard-sidebar-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    /* Show on small screens (<=700px) */
+    #dashboard-sidebar-mobile {
+        display: block;
+        width: 100%;
+        background-color: var(--dark-color);
+    }
+
+    #dashboard-sidebar-mobile button,
+    #dashboard-sidebar-mobile #mobile-menu-items-visible .mobile-menu-item {
+        width: 100%;
+        color: var(--white-color);
+        background-color: var(--dark-color);
+        padding: 15px 20px;
+        border: none;
+        font-size: 0.9rem;
+    }
+
+    #dashboard-sidebar-mobile button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #dashboard-sidebar-mobile button:focus {
+        outline: none;
+        color: var(--white-color);
+    }
+
+    #mobile-menu-items-hidden {
+        display: none;
+    }
+
+    #mobile-menu-items-visible {
+        display: flex;
+        flex-direction: column;
+    }
+}

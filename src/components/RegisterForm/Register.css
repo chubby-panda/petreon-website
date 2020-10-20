@@ -12,3 +12,17 @@
 #register-form .form-input-box input {
     width: 70%;
 }
+
+@media only screen and (max-width: 700px) {
+    #register-form .form-input-box {
+        width: 100%;
+    }
+
+    #register-form .form-input-box label {
+        width: 30%;
+    }
+
+    #register-form .form-input-box input {
+        width: 70%;
+    }
+}
